@@ -1,6 +1,8 @@
 package com.buaja.koin_annotations_example
 
 import android.app.Application
+import com.buaja.koin_annotations_example.di.CoroutinesDispatcherModule
+import com.buaja.koin_annotations_example.di.coroutineModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.ksp.generated.AppModuleModule
@@ -23,6 +25,7 @@ class App : Application() {
                 listOf(
                     AppModuleModule,
                     NetworkModuleModule,
+                    coroutineModule
                 )
             )
         }

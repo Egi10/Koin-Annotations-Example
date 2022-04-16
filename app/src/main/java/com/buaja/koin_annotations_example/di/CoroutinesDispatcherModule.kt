@@ -5,6 +5,8 @@ import kotlinx.coroutines.Dispatchers
 import org.koin.core.annotation.Module
 import org.koin.core.annotation.Named
 import org.koin.core.annotation.Single
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 
 
 /**
@@ -12,6 +14,10 @@ import org.koin.core.annotation.Single
  * @author Julsapargi Nursam
  * @project Koin-Annotations-Example
  **/
+
+/**
+ * TODO : Dispatcher Not Generate Code
+ */
 
 @Module
 class CoroutinesDispatcherModule {
@@ -26,4 +32,24 @@ class CoroutinesDispatcherModule {
     @Single
     @Named("MainDispatcher")
     fun mainDispatcher(): CoroutineDispatcher = Dispatchers.Main
+}
+
+val coroutineModule = module {
+    single(
+        named("IoDispatcher")
+    ) {
+        Dispatchers.IO
+    }
+
+    single(
+        named("DefaultDispatcher")
+    ) {
+        Dispatchers.Default
+    }
+
+    single(
+        named("MainDispatcher")
+    ) {
+        Dispatchers.Main
+    }
 }
