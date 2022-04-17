@@ -1,6 +1,7 @@
 package com.buaja.koin_annotations_example.data.source.remote
 
 import com.buaja.koin_annotations_example.data.source.remote.response.MealsResponse
+import com.buaja.koin_annotations_example.data.source.utils.ApiResult
 import kotlinx.coroutines.flow.Flow
 
 
@@ -11,5 +12,5 @@ import kotlinx.coroutines.flow.Flow
  **/
 
 interface MealDataSource {
-    fun getFood(): Flow<MealsResponse>
+    fun getFood(): Flow<ApiResult<MealsResponse>>
 }

@@ -2,6 +2,7 @@ package com.buaja.koin_annotations_example.domain.usecase
 
 import com.buaja.koin_annotations_example.domain.model.Meals
 import com.buaja.koin_annotations_example.domain.repository.MealRepository
+import com.buaja.koin_annotations_example.domain.utils.ResultState
 import kotlinx.coroutines.flow.Flow
 import org.koin.core.annotation.Factory
 
@@ -16,7 +17,7 @@ import org.koin.core.annotation.Factory
 class GetRandomMealsUseCaseImpl(
     private val mealRepository: MealRepository
 ) : GetRandomMealsUseCase {
-    override fun invoke(): Flow<List<Meals>> {
+    override fun invoke(): Flow<ResultState<List<Meals>>> {
         return mealRepository.getRandomMeals()
     }
 }

@@ -1,6 +1,7 @@
 package com.buaja.koin_annotations_example.domain.usecase
 
 import com.buaja.koin_annotations_example.domain.model.Meals
+import com.buaja.koin_annotations_example.domain.utils.ResultState
 import kotlinx.coroutines.flow.Flow
 
 
@@ -11,5 +12,5 @@ import kotlinx.coroutines.flow.Flow
  **/
 
 interface GetRandomMealsUseCase {
-    operator fun invoke(): Flow<List<Meals>>
+    operator fun invoke(): Flow<ResultState<List<Meals>>>
 }

@@ -3,6 +3,7 @@ package com.buaja.koin_annotations_example.ui.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.buaja.koin_annotations_example.domain.usecase.GetRandomMealsUseCase
+import com.buaja.koin_annotations_example.domain.utils.ResultState
 import com.buaja.koin_annotations_example.ui.main.state.MainUiState
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -39,18 +40,23 @@ class MainViewModel(
                         )
                     }
                 }
-                .catch { cause: Throwable ->
-                    _uiState.update {
-                        it.copy(
-                            messageError = cause.message ?: ""
-                        )
-                    }
-                }
-                .collect { list ->
-                    _uiState.update {
-                        it.copy(
-                            list = list
-                        )
+                .collect { resultState ->
+                    when (resultState) {
+                        is ResultState.Success -> {
+                            _uiState.update {
+                                it.copy(
+                                    list = resultState.data
+                                )
+                            }
+                        }
+
+                        is ResultState.Error -> {
+                            _uiState.update {
+                                it.copy(
+                                    messageError = resultState.message
+                                )
+                            }
+                        }
                     }
                 }
         }

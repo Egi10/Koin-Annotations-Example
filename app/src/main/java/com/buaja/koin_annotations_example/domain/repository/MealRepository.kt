@@ -1,6 +1,7 @@
 package com.buaja.koin_annotations_example.domain.repository
 
 import com.buaja.koin_annotations_example.domain.model.Meals
+import com.buaja.koin_annotations_example.domain.utils.ResultState
 import kotlinx.coroutines.flow.Flow
 
 
@@ -11,5 +12,5 @@ import kotlinx.coroutines.flow.Flow
  **/
 
 interface MealRepository {
-    fun getRandomMeals(): Flow<List<Meals>>
+    fun getRandomMeals(): Flow<ResultState<List<Meals>>>
 }
