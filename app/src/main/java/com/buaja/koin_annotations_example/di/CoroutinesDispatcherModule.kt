@@ -33,23 +33,3 @@ class CoroutinesDispatcherModule {
     @Named("MainDispatcher")
     fun mainDispatcher(): CoroutineDispatcher = Dispatchers.Main
 }
-
-val coroutineModule = module {
-    single(
-        named("IoDispatcher")
-    ) {
-        Dispatchers.IO
-    }
-
-    single(
-        named("DefaultDispatcher")
-    ) {
-        Dispatchers.Default
-    }
-
-    single(
-        named("MainDispatcher")
-    ) {
-        Dispatchers.Main
-    }
-}
